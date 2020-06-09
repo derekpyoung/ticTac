@@ -1,16 +1,55 @@
 const numberButtons = document.querySelectorAll('[data-cell]')
-var activePlayer;
 
-numberButtons.forEach(button => {
-  button.addEventListener('click', () => {
-  button.style.backgroundColor = 'red'
-  console.log(button.this.innerHTML);
-  //document.querySelector('.player-0').classList.toggle('active');
-//  document.querySelector('.player-1').classList.toggle('active');
+var activePlayer = 0;
+var arr = [];
+var arr1 = [];
 
-  //check against winning combos
-  })
-})
+function colorPicker(activePlayer){
+  if(activePlayer === 0){
+    numberButtons.forEach(button => {
+      button.addEventListener('click', () => {
+      button.style.backgroundColor = 'red'
+      arr.push(button.innerHTML);
+      console.log(activePlayer);
+      console.log(arr);
+      activePlayer++;
+      nextPlayer();
+
+      })
+    });
+  }else{
+    numberButtons.forEach(button => {
+      button.addEventListener('click', () => {
+      button.style.backgroundColor = 'blue'
+      arr1.push(button.innerHTML);
+      console.log(arr1);
+      nextPlayer();
+      })
+    });
+  }
+}
+colorPicker();
+
+function nextPlayer(activePlayer){
+  activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
+  if(activePlayer === 0){
+    activePlayer = 1;
+  } else {
+    activePlayer = 0;
+  }
+}
+
+
+// const winningCombos =
+//   [0,1,2]
+//   [3,4,5]
+//   [6,7,8]
+//   [0,4,8]
+//   [2,4,6]
+//   [0,3,6]
+//   [1,4,7]
+//   [2,5,8];
+
 // function nextPlayer() {
 //     //Next player
 //     activePlayer === 0 ? activePlayer = 1 : activePlayer = 0;
@@ -52,16 +91,7 @@ numberButtons.forEach(button => {
 // }
 // let btn
 // var scores, activePlayer, gamePlaying, btn;
-// const winningCombos = [
-//   [0,1,2]
-//   [3,4,5]
-//   [6,7,8]
-//   [0,4,8]
-//   [2,4,6]
-//   [0,3,6]
-//   [1,4,7]
-//   [2,5,8]
-// ];
+
 // document.getElementsById('grid-items').addEventListern('click',pickedGrid()) {
 //   if('clicked') {
 //     console.log('poop');

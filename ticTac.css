@@ -62,3 +62,15 @@ h1{
 .cell.blue{
   background: blue;
 }
+#counter-1{
+  display: inline-block;
+  text-align: left;
+}
+#counter-2{
+  display: inline-block;
+  text-align: right;
+  position: absolute; left:82%;
+}
+.counting{
+  display: block;
+}

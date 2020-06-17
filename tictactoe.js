@@ -2,6 +2,8 @@ const numberButtons = document.querySelectorAll('[data-cell]')
 var player = 'X';
 let circleTurn = true;
 
+
+
 function setUpEventListeners(){
   numberButtons.forEach(function(currentNumberButton){
     currentNumberButton.addEventListener('click', () => {
@@ -27,6 +29,14 @@ function putAnO(currentNumberButton){
 function changePlayer(){
   circleTurn = !circleTurn
 }
+function counterO(){
+  var counter = document.getElementById('counter-1').innerHTML++;
+  console.log(counter);
+}
+function counterX(){
+  var counter = document.getElementById('counter-2').innerHTML++;
+  console.log(counter);
+}
 
 function tictactoe(clickedCell){
   if(isMarked(clickedCell)){
@@ -34,11 +44,13 @@ function tictactoe(clickedCell){
   } else {
     if (circleTurn){
       putAnO(clickedCell);
-      changePlayer();
+      counterO();
     } else {
       putAnX(clickedCell);
-      changePlayer();
+      counterX();
     }
+    //check winner
+    changePlayer();
   }
 
 }

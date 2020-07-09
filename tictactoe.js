@@ -83,19 +83,19 @@ function tictactoe(clickedCell){
 
 function checkWinX(){
   console.log("checking if X has a winning combo")
-  checkForWinningCombo();
+  checkForWinningCombo(winningCombo[0][0],winningCombo[0][1],winningCombo[0][2]);
 }
 
 function checkForWinningCombo(firstNumber, secondNumber, thirdNumber) {
   console.log("checking 0, 1, and 2 for an X")
 
-  var result0 = checkIfarrXcontains("0")
+  var result0 = checkIfarrXcontains(firstNumber)
   console.log(result0);
 
-  var result1 = checkIfarrXcontains("1")
+  var result1 = checkIfarrXcontains(secondNumber)
   console.log(result1);
 
-  var result2 = checkIfarrXcontains("2")
+  var result2 = checkIfarrXcontains(thirdNumber)
   console.log(result2);
 
   if(result0 && result1 && result2){

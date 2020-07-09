@@ -3,6 +3,7 @@ var player = 'X';
 let circleTurn = true;
 var arrX = [];
 var arrO = [];
+var xWins = false;
 var winningCombo = [
     ['0', '1', '2'],
     ['3', '4', '5'],
@@ -58,6 +59,10 @@ function counterX(){
 }
 
 function tictactoe(clickedCell){
+  if(xWins){
+    console.log('X has already won');
+    return;
+  }
   if(isMarked(clickedCell)){
     console.log('poop');
   } else {
@@ -77,15 +82,26 @@ function tictactoe(clickedCell){
 }
 
 function checkWinX(){
-    console.log("checking if X has a winning combo")
-    checkIfarrXcontains("0")
+  console.log("checking if X has a winning combo")
+  console.log("checking 0, 1, and 2 for an X")
+  var result0 = checkIfarrXcontains("0")
+    console.log(result0);
+  var result1 = checkIfarrXcontains("1")
+    console.log(result1);
+  var result2 = checkIfarrXcontains("2")
+    console.log(result2);
+    if(result0 && result1 && result2){
+      console.log('X Wins!');
+      xWins = true;
+      console.log(xWins);
+    }
 }
 function checkIfarrXcontains(cellNumber) {
   // write your new code here
   if(arrX.includes(cellNumber)){
-    console.log('true');
+    return true;
   } else {
-    console.log('false');
+    return false;
   }
   // console.log if arrX currently contains cellNumber
   // in this case we are passing in "0" so if you mark an X in the first cell this method should console log true

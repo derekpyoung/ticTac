@@ -1,6 +1,17 @@
 const numberButtons = document.querySelectorAll('[data-cell]')
 var player = 'X';
 let circleTurn = true;
+var arrX = [];
+var arrO = [];
+var winningCombo = [
+    ['0', '1', '2'],
+    ['3', '4', '5'],
+    ['6', '7', '8'],
+    ['0', '4', '8'],
+    ['2', '4', '6'],
+    ['1', '4', '7'],
+    ['2', '5', '8']
+  ];
 
 
 
@@ -11,6 +22,7 @@ function setUpEventListeners(){
     })
   })
 }
+
 function isMarked(currentNumberButton){
   if(currentNumberButton.innerHTML === "X" || currentNumberButton.innerHTML === "O"){
     return true;
@@ -18,24 +30,31 @@ function isMarked(currentNumberButton){
     return false;
   }
 }
+
 function putAnX(currentNumberButton){
   currentNumberButton.innerHTML = 'X';
+  arrX.push(currentNumberButton.id);
+  console.log(arrX);
+
 }
 
 function putAnO(currentNumberButton){
    currentNumberButton.innerHTML = 'O';
+   arrO.push(currentNumberButton.id);
+   console.log(arrO);
+
 }
 
 function changePlayer(){
   circleTurn = !circleTurn
 }
+
 function counterO(){
   var counter = document.getElementById('counter-1').innerHTML++;
-  console.log(counter);
 }
+
 function counterX(){
   var counter = document.getElementById('counter-2').innerHTML++;
-  console.log(counter);
 }
 
 function tictactoe(clickedCell){
@@ -45,22 +64,62 @@ function tictactoe(clickedCell){
     if (circleTurn){
       putAnO(clickedCell);
       counterO();
+    //  checkWinO();
     } else {
       putAnX(clickedCell);
       counterX();
+
     }
     //check winner
+      checkWinX();
     changePlayer();
   }
-
 }
-setUpEventListeners();
+
+function checkWinX(){
+    console.log("checking if X has a winning combo")
+    checkIfarrXcontains("0")
+}
+function checkIfarrXcontains(cellNumber) {
+  // write your new code here
+  if(arrX.includes(cellNumber)){
+    console.log('true');
+  } else {
+    console.log('false');
+  }
+  // console.log if arrX currently contains cellNumber
+  // in this case we are passing in "0" so if you mark an X in the first cell this method should console log true
+  // if there is no x in the first cell this method should console log false
+}
 
 
-//
-// function eventListening(){
-//   numberButtons.forEach(button => {
-//     button.addEventListener('click', () => clickButton(button));
-//   })
+
+
+
+
+//     if(winningCombo[0][0] == arrX[0] && winningCombo[0][1] == arrX[1] && winningCombo[0][2] == arrX[2]){
+//       console.log("X WIN");
+//     } else if(winningCombo[1][0] == arrX[0] && winningCombo[1][1] == arrX[1] && winningCombo[1][2] == arrX[2]){
+//       console.log('X WIN');
+//     } else if(winningCombo[2][0] == arrX[0] && winningCombo[2][1] == arrX[1] && winningCombo[2][2] == arrX[2]){
+//       console.log('X WIN');
+//     } else if(winningCombo[3][0] == arrX[0] && winningCombo[3][1] == arrX[1] && winningCombo[3][2] == arrX[2]){
+//       console.log('X WIN');
+//     } else if(winningCombo[4][0] == arrX[0] && winningCombo[4][1] == arrX[1] && winningCombo[4][2] == arrX[2]){
+//       console.log('X WIN');
+//     }
 // }
-//eventListening();
+
+
+
+// function checkWinX(){
+//   arrX.sort(function(a,b){
+//     return a - b;
+//   })
+//   for(var i = 0; i < winningCombo.length; i++){
+//     if(arrX[i] = winningCombo[i]){
+//     }
+//   }
+// }
+
+setUpEventListeners();

@@ -1,18 +1,21 @@
 .grid-container {
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 1px;
   background-color: purple;
   grid-template-columns: auto auto auto;
   background-color: teal;
-  height: 45rem;
+  height: 820px;
+  width: 852px;
+
 
 }
 .cell {
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid rgba(0, 0, 0, 0.8);
-  padding: 20px;
-  font-size: 158px;
+  font-size: 100px;
   text-align: center;
+  width: 283px;
+  height: 273px;
 }
 h2 {
   display: inline-block;
@@ -20,18 +23,7 @@ h2 {
 h1{
   text-align: center;
 }
-.active { background-color: orange; }
-.active .player-name { font-weight: 300; }
 
-.active .player-name::after {
-    content: "\2022";
-    font-size: 47px;
-    position: absolute;
-    color: #EB4D4D;
-    top: -7px;
-    right: 10px;
-
-}
 .cell:hover{
   background-color: purple;
 }
@@ -69,8 +61,12 @@ h1{
 #counter-2{
   display: inline-block;
   text-align: right;
-  position: absolute; left:82%;
+  position: absolute; left:40%;
 }
 .counting{
-  display: block;
+  display: inline-block;
+}
+#name-two{
+  margin-top: -20px;
+  position: absolute; left: 40%;
 }

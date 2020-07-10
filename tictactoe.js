@@ -4,6 +4,7 @@ let circleTurn = true;
 var arrX = [];
 var arrO = [];
 var xWins = false;
+var oWins = false;
 var winningCombo = [
     ['0', '1', '2'],
     ['3', '4', '5'],
@@ -11,7 +12,8 @@ var winningCombo = [
     ['0', '4', '8'],
     ['2', '4', '6'],
     ['1', '4', '7'],
-    ['2', '5', '8']
+    ['2', '5', '8'],
+    ['0', '3', '6']
   ];
 
 
@@ -35,14 +37,14 @@ function isMarked(currentNumberButton){
 function putAnX(currentNumberButton){
   currentNumberButton.innerHTML = 'X';
   arrX.push(currentNumberButton.id);
-  console.log(arrX);
+
 
 }
 
 function putAnO(currentNumberButton){
    currentNumberButton.innerHTML = 'O';
    arrO.push(currentNumberButton.id);
-   console.log(arrO);
+
 
 }
 
@@ -77,26 +79,21 @@ function tictactoe(clickedCell){
     }
     //check winner
       checkWinX();
+      checkWinO();
     changePlayer();
   }
 }
 
 function checkWinX(){
-  console.log("checking if X has a winning combo")
-  checkForWinningCombo(winningCombo[0][0],winningCombo[0][1],winningCombo[0][2]);
+  for(var i = 0; i < winningCombo.length;i++){
+    checkForWinningCombo(winningCombo[i][0],winningCombo[i][1],winningCombo[i][2]);
+  }
 }
 
 function checkForWinningCombo(firstNumber, secondNumber, thirdNumber) {
-  console.log("checking 0, 1, and 2 for an X")
-
   var result0 = checkIfarrXcontains(firstNumber)
-  console.log(result0);
-
   var result1 = checkIfarrXcontains(secondNumber)
-  console.log(result1);
-
   var result2 = checkIfarrXcontains(thirdNumber)
-  console.log(result2);
 
   if(result0 && result1 && result2){
     console.log('X Wins!');
@@ -112,39 +109,33 @@ function checkIfarrXcontains(cellNumber) {
   } else {
     return false;
   }
-  // console.log if arrX currently contains cellNumber
-  // in this case we are passing in "0" so if you mark an X in the first cell this method should console log true
-  // if there is no x in the first cell this method should console log false
 }
 
+function checkWinO(){
+  for(var i = 0; i < winningCombo.length;i++){
+    checkForWinningComboO(winningCombo[i][0],winningCombo[i][1],winningCombo[i][2]);
+  }
+}
 
+function checkForWinningComboO(firstNumber, secondNumber, thirdNumber) {
+  var result0 = checkIfarrOcontains(firstNumber)
+  var result1 = checkIfarrOcontains(secondNumber)
+  var result2 = checkIfarrOcontains(thirdNumber)
 
+  if(result0 && result1 && result2){
+    console.log('O Wins!');
+    oWins = true;
+    console.log(oWins);
+  }
+}
 
+function checkIfarrOcontains(cellNumber) {
+  if(arrO.includes(cellNumber)){
+    return true;
+  } else {
+    return false;
+  }
+}
 
-
-//     if(winningCombo[0][0] == arrX[0] && winningCombo[0][1] == arrX[1] && winningCombo[0][2] == arrX[2]){
-//       console.log("X WIN");
-//     } else if(winningCombo[1][0] == arrX[0] && winningCombo[1][1] == arrX[1] && winningCombo[1][2] == arrX[2]){
-//       console.log('X WIN');
-//     } else if(winningCombo[2][0] == arrX[0] && winningCombo[2][1] == arrX[1] && winningCombo[2][2] == arrX[2]){
-//       console.log('X WIN');
-//     } else if(winningCombo[3][0] == arrX[0] && winningCombo[3][1] == arrX[1] && winningCombo[3][2] == arrX[2]){
-//       console.log('X WIN');
-//     } else if(winningCombo[4][0] == arrX[0] && winningCombo[4][1] == arrX[1] && winningCombo[4][2] == arrX[2]){
-//       console.log('X WIN');
-//     }
-// }
-
-
-
-// function checkWinX(){
-//   arrX.sort(function(a,b){
-//     return a - b;
-//   })
-//   for(var i = 0; i < winningCombo.length; i++){
-//     if(arrX[i] = winningCombo[i]){
-//     }
-//   }
-// }
 
 setUpEventListeners();

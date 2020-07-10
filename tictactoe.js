@@ -67,6 +67,10 @@ function tictactoe(clickedCell){
   }
   if(isMarked(clickedCell)){
     console.log('poop');
+  }
+  if(oWins){
+    console.log('O has already won');
+    return;
   } else {
     if (circleTurn){
       putAnO(clickedCell);
@@ -80,7 +84,7 @@ function tictactoe(clickedCell){
     //check winner
       checkWinX();
       checkWinO();
-    changePlayer();
+      changePlayer();
   }
 }
 
@@ -136,6 +140,8 @@ function checkIfarrOcontains(cellNumber) {
     return false;
   }
 }
+
+
 
 
 setUpEventListeners();

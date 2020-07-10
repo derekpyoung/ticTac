@@ -16,8 +16,6 @@ var winningCombo = [
     ['0', '3', '6']
   ];
 
-
-
 function setUpEventListeners(){
   numberButtons.forEach(function(currentNumberButton){
     currentNumberButton.addEventListener('click', () => {
@@ -37,15 +35,11 @@ function isMarked(currentNumberButton){
 function putAnX(currentNumberButton){
   currentNumberButton.innerHTML = 'X';
   arrX.push(currentNumberButton.id);
-
-
 }
 
 function putAnO(currentNumberButton){
    currentNumberButton.innerHTML = 'O';
    arrO.push(currentNumberButton.id);
-
-
 }
 
 function changePlayer(){
@@ -65,9 +59,11 @@ function tictactoe(clickedCell){
     console.log('X has already won');
     return;
   }
+
   if(isMarked(clickedCell)){
     console.log('poop');
   }
+
   if(oWins){
     console.log('O has already won');
     return;
@@ -75,11 +71,10 @@ function tictactoe(clickedCell){
     if (circleTurn){
       putAnO(clickedCell);
       counterO();
-    //  checkWinO();
+
     } else {
       putAnX(clickedCell);
       counterX();
-
     }
     //check winner
       checkWinX();
@@ -101,6 +96,7 @@ function checkForWinningCombo(firstNumber, secondNumber, thirdNumber) {
 
   if(result0 && result1 && result2){
     console.log('X Wins!');
+    document.getElementById('4').innerHTML = "X WINS!"
     xWins = true;
     console.log(xWins);
   }
@@ -128,6 +124,7 @@ function checkForWinningComboO(firstNumber, secondNumber, thirdNumber) {
 
   if(result0 && result1 && result2){
     console.log('O Wins!');
+    document.getElementById('4').innerHTML = "O WINS!"
     oWins = true;
     console.log(oWins);
   }
@@ -140,8 +137,5 @@ function checkIfarrOcontains(cellNumber) {
     return false;
   }
 }
-
-
-
 
 setUpEventListeners();

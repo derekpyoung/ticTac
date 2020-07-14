@@ -89,10 +89,16 @@ function checkWinX(){
   }
 }
 
+function checkWinO(){
+  for(var i = 0; i < winningCombo.length;i++){
+    checkForWinningComboO(winningCombo[i][0],winningCombo[i][1],winningCombo[i][2]);
+  }
+}
+
 function checkForWinningCombo(firstNumber, secondNumber, thirdNumber) {
-  var result0 = checkIfarrXcontains(firstNumber)
-  var result1 = checkIfarrXcontains(secondNumber)
-  var result2 = checkIfarrXcontains(thirdNumber)
+  var result0 = checkIfArrayContains(firstNumber,arrX)
+  var result1 = checkIfArrayContains(secondNumber, arrX)
+  var result2 = checkIfArrayContains(thirdNumber, arrX)
 
   if(result0 && result1 && result2){
     console.log('X Wins!');
@@ -102,25 +108,18 @@ function checkForWinningCombo(firstNumber, secondNumber, thirdNumber) {
   }
 }
 
-function checkIfarrXcontains(cellNumber) {
-  // write your new code here
-  if(arrX.includes(cellNumber)){
+function checkIfArrayContains(cellNumber,array){
+  if(array.includes(cellNumber)){
     return true;
   } else {
     return false;
   }
 }
 
-function checkWinO(){
-  for(var i = 0; i < winningCombo.length;i++){
-    checkForWinningComboO(winningCombo[i][0],winningCombo[i][1],winningCombo[i][2]);
-  }
-}
-
 function checkForWinningComboO(firstNumber, secondNumber, thirdNumber) {
-  var result0 = checkIfarrOcontains(firstNumber)
-  var result1 = checkIfarrOcontains(secondNumber)
-  var result2 = checkIfarrOcontains(thirdNumber)
+  var result0 = checkIfArrayContains(firstNumber,arrO)
+  var result1 = checkIfArrayContains(secondNumber,arrO)
+  var result2 = checkIfArrayContains(thirdNumber,arrO)
 
   if(result0 && result1 && result2){
     console.log('O Wins!');
@@ -130,12 +129,21 @@ function checkForWinningComboO(firstNumber, secondNumber, thirdNumber) {
   }
 }
 
-function checkIfarrOcontains(cellNumber) {
-  if(arrO.includes(cellNumber)){
-    return true;
-  } else {
-    return false;
-  }
-}
-
 setUpEventListeners();
+
+// function checkIfarrXcontains(cellNumber) {
+//   // write your new code here
+//   if(arrX.includes(cellNumber)){
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+//
+// function checkIfarrOcontains(cellNumber) {
+//   if(arrO.includes(cellNumber)){
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }

@@ -33,17 +33,25 @@ function isMarked(currentNumberButton){
 }
 
 function putAnX(currentNumberButton){
-  currentNumberButton.innerHTML = 'X';
-  arrX.push(currentNumberButton.id);
+  if(isMarked(currentNumberButton)){
+    console.log('nope');
+  } else {
+    currentNumberButton.innerHTML = 'X';
+    arrX.push(currentNumberButton.id);
+  }
 }
 
 function putAnO(currentNumberButton){
-   currentNumberButton.innerHTML = 'O';
-   arrO.push(currentNumberButton.id);
+  if(isMarked(currentNumberButton)){
+    console.log('nope');
+  } else {
+    currentNumberButton.innerHTML = 'O';
+    arrO.push(currentNumberButton.id);
+  }
 }
 
 function changePlayer(){
-  circleTurn = !circleTurn
+    circleTurn = !circleTurn
 }
 
 // function counterO(){
@@ -55,7 +63,6 @@ function changePlayer(){
 // }
 function counter(poop){
   var counter = document.getElementById(poop).innerHTML++;
-
 }
 
 function tictactoe(clickedCell){
@@ -66,6 +73,7 @@ function tictactoe(clickedCell){
 
   if(isMarked(clickedCell)){
     console.log('poop');
+    circleTurn = !circleTurn
   }
 
   if(oWins){

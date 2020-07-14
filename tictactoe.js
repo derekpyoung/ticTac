@@ -46,12 +46,16 @@ function changePlayer(){
   circleTurn = !circleTurn
 }
 
-function counterO(){
-  var counter = document.getElementById('counter-1').innerHTML++;
-}
+// function counterO(){
+//   var counter = document.getElementById('counter-1').innerHTML++;
+// }
+//
+// function counterX(){
+//   var counter = document.getElementById('counter-2').innerHTML++;
+// }
+function counter(poop){
+  var counter = document.getElementById(poop).innerHTML++;
 
-function counterX(){
-  var counter = document.getElementById('counter-2').innerHTML++;
 }
 
 function tictactoe(clickedCell){
@@ -70,11 +74,11 @@ function tictactoe(clickedCell){
   } else {
     if (circleTurn){
       putAnO(clickedCell);
-      counterO();
+      counter('counter-1');
 
     } else {
       putAnX(clickedCell);
-      counterX();
+      counter('counter-2');
     }
     //check winner
       checkWinX();

@@ -32,18 +32,14 @@ function isMarked(currentNumberButton){
 }
 
 function putAnX(currentNumberButton){
-  if(isMarked(currentNumberButton)){
-    console.log('nope');
-  } else {
+  if(!isMarked(currentNumberButton)){
     currentNumberButton.innerHTML = 'X';
     arrX.push(currentNumberButton.id);
   }
 }
 
 function putAnO(currentNumberButton){
-  if(isMarked(currentNumberButton)){
-    console.log('nope');
-  } else {
+  if(!isMarked(currentNumberButton)){
     currentNumberButton.innerHTML = 'O';
     arrO.push(currentNumberButton.id);
   }
@@ -134,20 +130,3 @@ function checkForWinningComboO(firstNumber, secondNumber, thirdNumber) {
 }
 
 setUpEventListeners();
-
-// function checkIfarrXcontains(cellNumber) {
-//   // write your new code here
-//   if(arrX.includes(cellNumber)){
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }
-//
-// function checkIfarrOcontains(cellNumber) {
-//   if(arrO.includes(cellNumber)){
-//     return true;
-//   } else {
-//     return false;
-//   }
-// }

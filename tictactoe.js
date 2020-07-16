@@ -1,5 +1,4 @@
 const numberButtons = document.querySelectorAll('[data-cell]')
-var player = 'X';
 let circleTurn = true;
 var arrX = [];
 var arrO = [];
@@ -54,13 +53,6 @@ function changePlayer(){
     circleTurn = !circleTurn
 }
 
-// function counterO(){
-//   var counter = document.getElementById('counter-1').innerHTML++;
-// }
-//
-// function counterX(){
-//   var counter = document.getElementById('counter-2').innerHTML++;
-// }
 function counter(poop){
   var counter = document.getElementById(poop).innerHTML++;
 }

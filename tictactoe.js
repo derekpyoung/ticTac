@@ -2,6 +2,7 @@ const numberButtons = document.querySelectorAll('[data-cell]')
 let circleTurn = true;
 var arrX = [];
 var arrO = [];
+var moves = 0;
 var xWins = false;
 var oWins = false;
 var winningCombo = [
@@ -36,6 +37,7 @@ function putAnX(currentNumberButton){
     currentNumberButton.innerHTML = 'X';
     counter('counter-2');
     arrX.push(currentNumberButton.id);
+    moves++;
   }
 }
 
@@ -44,6 +46,7 @@ function putAnO(currentNumberButton){
     currentNumberButton.innerHTML = 'O';
     counter('counter-1');
     arrO.push(currentNumberButton.id);
+    moves++;
   }
 }
 
@@ -73,12 +76,14 @@ function tictactoe(clickedCell){
   } else {
     if (circleTurn){
       putAnO(clickedCell);
+
     } else {
       putAnX(clickedCell);
     }
     //check winner
       checkWinX();
       checkWinO();
+      checkCats();
       changePlayer();
   }
 }
@@ -126,6 +131,12 @@ function checkForWinningComboO(firstNumber, secondNumber, thirdNumber) {
     document.getElementById('4').innerHTML = "O WINS!"
     oWins = true;
     console.log(oWins);
+  }
+}
+
+function checkCats(){
+  if(moves == 9 && !xWins && !oWins){
+    document.getElementById('4').innerHTML = "CATS"
   }
 }
 

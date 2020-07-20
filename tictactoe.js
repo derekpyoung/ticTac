@@ -34,6 +34,7 @@ function isMarked(currentNumberButton){
 function putAnX(currentNumberButton){
   if(!isMarked(currentNumberButton)){
     currentNumberButton.innerHTML = 'X';
+    counter('counter-2');
     arrX.push(currentNumberButton.id);
   }
 }
@@ -41,6 +42,7 @@ function putAnX(currentNumberButton){
 function putAnO(currentNumberButton){
   if(!isMarked(currentNumberButton)){
     currentNumberButton.innerHTML = 'O';
+    counter('counter-1');
     arrO.push(currentNumberButton.id);
   }
 }
@@ -64,17 +66,15 @@ function tictactoe(clickedCell){
     circleTurn = !circleTurn
   }
 
+
   if(oWins){
     console.log('O has already won');
     return;
   } else {
     if (circleTurn){
       putAnO(clickedCell);
-      counter('counter-1');
-
     } else {
       putAnX(clickedCell);
-      counter('counter-2');
     }
     //check winner
       checkWinX();
